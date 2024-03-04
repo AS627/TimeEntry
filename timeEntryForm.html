@@ -1,0 +1,53 @@
+<template>
+    <lightning-card title="Time Entry Form" icon-name="standard:event">
+        <div class="slds-p-around_medium">
+            <lightning-input type="date" label="Select a Sunday" onchange={handleDateChange}></lightning-input>
+			<!-- Condition to only show table inputs after date selected is Sunday-->
+            <template if:true={isSundaySelected}>
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+						<!-- Table Columns-->
+                        <tr class="slds-line-height_reset">
+                            <th class="" scope="col"> <div class="slds-truncate" title="Sunday">Sunday</div> </th>
+                            <th class="" scope="col"> <div class="slds-truncate" title="Monday">Monday</div> </th>
+							<th class="" scope="col"> <div class="slds-truncate" title="Tuesday">Tuesday</div> </th>
+							<th class="" scope="col"> <div class="slds-truncate" title="Wednesday">Wednesday</div> </th>
+							<th class="" scope="col"> <div class="slds-truncate" title="Thursday">Thursday</div> </th>
+							<th class="" scope="col"> <div class="slds-truncate" title="Friday">Friday</div> </th>
+							<th class="" scope="col"> <div class="slds-truncate" title="Saturday">Saturday</div> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+						<!-- Data Input .XX accuracy for partial hours-->
+                        <tr class="slds-hint-parent">
+                            <td>
+                                <lightning-input type="number" label="Hours Worked" onchange={handleHoursChange} data-day="Sunday__c" step="0.01"></lightning-input>
+                            </td>
+                            <td>
+                                <lightning-input type="number" label="Hours Worked" onchange={handleHoursChange} data-day="Monday__c" step="0.01"></lightning-input>
+                            </td>
+                            <td>
+                                <lightning-input type="number" label="Hours Worked" onchange={handleHoursChange} data-day="Tuesday__c" step="0.01"></lightning-input>
+                            </td>
+                            <td>
+                                <lightning-input type="number" label="Hours Worked" onchange={handleHoursChange} data-day="Wednesday__c" step="0.01"></lightning-input>
+                            </td>
+                            <td>
+                                <lightning-input type="number" label="Hours Worked" onchange={handleHoursChange} data-day="Thursday__c" step="0.01"></lightning-input>
+                            </td>
+                            <td>
+                                <lightning-input type="number" label="Hours Worked" onchange={handleHoursChange} data-day="Friday__c" step="0.01"></lightning-input>
+                            </td>
+                            <td>
+                                <lightning-input type="number" label="Hours Worked" onchange={handleHoursChange} data-day="Saturday__c" step="0.01"></lightning-input>
+                            </td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+				<!-- Record Submission-->
+                <lightning-button label="Save" variant="brand" onclick={saveHours} class="slds-m-top_medium"></lightning-button>
+            </template>
+        </div>
+    </lightning-card>
+</template>
